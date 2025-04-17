@@ -1,0 +1,43 @@
+name: Test Devcontainer
+
+on:
+  push:
+    branches: [ main, duckdb ]
+    paths:
+      - '.devcontainer/**'
+      - 'Dockerfile'
+      - 'requirements.txt'
+  pull_request:
+    branches: [ main, duckdb ]
+    paths:
+      - '.devcontainer/**'
+      - 'Dockerfile'
+      - 'requirements.txt'
+  workflow_dispatch:
+
+jobs:
+  test-devcontainer:
+    name: Build and Test Devcontainer
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Install devcontainer CLI
+        run: npm install -g @devcontainers/cli
+      
+      - name: Build devcontainer
+        run: devcontainer build --workspace-folder .
+      
+      - name: Start devcontainer
+        run: devcontainer up --workspace-folder .
+      
+      - name: Run tests inside container
+        run: |
+          devcontainer exec --workspace-folder . bash -c "cd /workspaces/$(basename $GITHUB_WORKSPACE) && chmod +x ./.devcontainer/test-devcontainer.sh && export TEST_DEVCONTAINER=true && ./.devcontainer/test-devcontainer.sh"
+      
+      - name: Verify dbt commands
+        run: |
+          devcontainer exec --workspace-folder . bash -c "cd /workspaces/$(basename $GITHUB_WORKSPACE) && dbt --version"
+          devcontainer exec --workspace-folder . bash -c "cd /workspaces/$(basename $GITHUB_WORKSPACE) && dbt debug"

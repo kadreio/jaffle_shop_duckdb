@@ -1,7 +1,8 @@
 // Update the VARIANT arg in docker-compose.yml to pick a Python version: 3, 3.8, 3.7, 3.6
 {
     "name": "dbt",
-    "dockerFile" : "Dockerfile",
+    "dockerFile" : "../Dockerfile",
+    "forwardPorts": [8080],
     "settings": {
         "terminal.integrated.defaultProfile.linux#": "/bin/sh",
         "files.associations": {
@@ -87,8 +88,10 @@
         "ms-python.python",
         "visualstudioexptteam.vscodeintellicode",
         "samuelcolvin.jinjahtml",
-        "redhat.vscode-yaml"
+        "redhat.vscode-yaml",
+        "anthropic.claude-in-vscode"
     ],
     
-    "remoteUser": "vscode"
+    "remoteUser": "vscode",
+    "postCreateCommand": "./.devcontainer/post-create.sh"
 }

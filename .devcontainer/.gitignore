@@ -1,0 +1,4 @@
+# Ignore DuckDB database files
+*.duckdb
+*.duckdb.wal
+EOL < /dev/null

@@ -1,0 +1,86 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "dbt: Build",
+            "type": "shell",
+            "command": "dbt build",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "dbt: Run",
+            "type": "shell",
+            "command": "dbt run",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "dbt: Test",
+            "type": "shell",
+            "command": "dbt test",
+            "group": "test",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "dbt: Seed",
+            "type": "shell",
+            "command": "dbt seed",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "dbt: Generate Docs",
+            "type": "shell",
+            "command": "dbt docs generate",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "dbt: Serve Docs",
+            "type": "shell",
+            "command": "dbt docs serve",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "duckcli: Open DuckDB CLI",
+            "type": "shell",
+            "command": "duckcli /workspace/duckdb_data/jaffle_shop.duckdb",
+            "group": "none",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        }
+    ]
+}
+EOL < /dev/null

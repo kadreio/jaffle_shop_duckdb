@@ -1,0 +1,16 @@
+{
+  "sqlfluff.dialect": "duckdb",
+  "sqlfluff.linter.run": "onType",
+  "sqlfluff.executablePath": "/usr/local/bin/sqlfluff",
+  "editor.formatOnSave": true,
+  "python.formatting.provider": "black",
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": true,
+  "sql.format.enable": true,
+  "files.associations": {
+    "*.sql": "jinja-sql",
+    "*.sqlfluff": "ini",
+    "*.yml": "yaml",
+    "**/target/**": ""
+  }
+}

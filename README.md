@@ -446,6 +446,48 @@ This is a known issue in DuckDB. If you are using DBeaver, this means shutting d
 
 Very worst-case, deleting the database file will get you back in action (BUT you will lose all your data).
 
+## Development Container
+
+This project includes a Development Container configuration (devcontainer) that provides a consistent, isolated environment for working with the jaffle_shop_duckdb project. Using the devcontainer ensures that all developers have the same development experience regardless of their local machine setup.
+
+### Features
+- Pre-configured Python 3.9 environment with all required dependencies
+- Automatically sets up DuckDB with proper configuration
+- Includes SQL linting with SQLFluff
+- VS Code extensions for dbt development pre-installed
+- Persistent DuckDB database files
+- Port forwarding for dbt docs (port 8080)
+- Data browsing capabilities with duckcli
+
+### Using the Devcontainer
+
+#### With GitHub Codespaces
+1. Click the green **Code** button on this repo's homepage
+2. Select the **Codespaces** tab
+3. Click "Create codespace on `duckdb`"
+4. Wait for the codespace to initialize (~1 minute)
+5. The container will automatically run `dbt build` to verify everything works
+
+#### With VS Code and Docker locally
+1. Install [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+2. Install the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) in VS Code
+3. Clone this repository and open it in VS Code
+4. Click the blue button in the bottom-left corner of VS Code or use the Command Palette (Ctrl+Shift+P or Cmd+Shift+P) to select "Reopen in Container"
+5. Wait for the container to build (may take a few minutes the first time)
+6. Once launched, you can run `dbt build` in the terminal to verify the setup
+
+### Installed VS Code Extensions
+- dbt Power User (bastienboutonnet.vscode-dbt)
+- SQLFluff linting (dorzey.vscode-sqlfluff)
+- Python support (ms-python.python)
+- Jinja template support (samuelcolvin.jinjahtml)
+- YAML schema validation (redhat.vscode-yaml)
+- Find Related files (amodio.find-related)
+
+### Common Tasks
+- Run `dbt build` to build all models and run tests
+- Run `dbt docs generate && dbt docs serve` to generate and view documentation
+- Run `duckcli jaffle_shop.duckdb` to explore the database
 
 #### GitHub Codespaces and VSCode Remote Container
 
